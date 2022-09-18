@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css" />
+    <title>@ViewBag.Title - Quản trị</title>
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top bg-dark">
+        <div class="container">
+            <div class="navbar-header p-4">
+                <h1 style="color:white">Administator</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        @RenderSection("Feature", false)
+        <hr />
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4 bg-success">
+                <img src="~/Images/Logo/TDMU.png" class="p-3" />
+            </div>
+            <div class="col-8 bg-dark p-3" style="color:white">
+                <p class="fw-bold">Website này được tạo bởi 2 sinh viên đại học Thủ Dầu Một:</p>
+                <ul>
+                    <li><p class="fw-bold">Trần Minh Quân</p></li>
+                    <li><p class="fw-bold">Vương Tiến An</p></li>
+                </ul>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp; Nhằm phục vụ chương trình học "Lập trình website" vui lòng không dùng vào mục đích thương mại, mọi thắc mắc liên hệ mail <b>quantran1432k@gmail.com</b> hoặc sdt <b>0868655861</b></p>
+            <br />
+                <br />
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

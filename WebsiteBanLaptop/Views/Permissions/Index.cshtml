@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebsiteBanLaptop.Models.Permission>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 class="p-4 fw-bold">Permission</h2>
+
+<p style="color:white;text-decoration:none;font-weight:bold">
+    <button class="btn btn-success">
+        @Html.ActionLink("Create New", "Create", null, new { @style = "color:white;text-decoration:none;font-weight:bold" })
+    </button>
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <button class="btn btn-warning">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @style = "color:white;text-decoration:none;font-weight:bold" })
+                </button>
+                <button class="btn btn-success">
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @style = "color:white;text-decoration:none;font-weight:bold" })
+                </button>
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @style = "color:white;text-decoration:none;font-weight:bold" })
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
