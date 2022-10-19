@@ -1,0 +1,102 @@
+﻿body {
+
+}
+/*Navbar*/
+.HeaderListBar {
+    background-color: white;
+    width: 250px;
+    height:100px;
+    position: absolute;
+    left: -250px;
+    transition: all .3s;
+}
+.HeaderListBarShow {
+    top:-10px;
+    padding-top:20px;
+    left: 0px;
+    transition:all .3s;
+}
+.OpenList{
+    position:absolute;
+    left:250px;
+}
+.OpenList:hover {
+    color: #3f6ad8;
+    transition: all .2s;
+    cursor: pointer;
+}
+.Show {
+    display:block;
+    transition: all .3s;
+}
+.Hide {
+    display: none;
+    transition: all .3s;
+}
+.CloseList{
+    position:relative;
+    left:180px;
+    transition:all 0.2s;
+    background-color:white;
+}
+.CloseList:hover {
+    color: #ce2323;
+    transition: all .2s;
+    cursor: pointer;
+}
+/*SideBar*/
+.SideBar {
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-right: 50px;
+    max-width: 250px;
+    width: 250px;
+    position: absolute;
+    left: -250px;
+    background-color: white;
+    transition: all 0.3s;
+}
+.SideBarShow
+{
+    max-width:250px;
+    left:0px;
+    transition:all .3s;
+}
+.SideBar .Title {
+    color: #3f6ad8;
+    overflow:hidden;
+    
+}
+.SideBar .Option{
+
+}
+.SideBar .Option .Node {
+    position:relative;
+    left:-40px;
+    list-style: none;
+    padding:4px 12px 4px 12px;
+}
+.SideBar .Option .Node .Negative {
+    text-decoration:none;
+    color:black;
+}   
+.SideBar .Option .Node:hover {
+    color: #3f6ad8;
+    width:220px;
+    border-radius: 5px;
+    background-color:#e0f3ff;
+    cursor: pointer;
+    font-weight:500;
+    transition: all .2s;
+}
+/*Body*/
+.ScrollBody{
+    max-height:700px;
+    min-height:700px;
+    overflow:scroll;
+}
+/*Footer*/
+.footer {
+    box-shadow: 2px 2px 10px 2px #6c757d;
+}

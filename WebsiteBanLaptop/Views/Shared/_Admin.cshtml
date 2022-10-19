@@ -4,37 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Main.css"/>
     <title>@ViewBag.Title - Quản trị</title>
 
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top bg-dark">
-        <div class="container">
-            <div class="navbar-header p-4">
-                <h1 style="color:white">Administator</h1>
+    <div class="navbar navbar-inverse navbar-fixed-top bg-dark" style="background-color:white;box-shadow:0px 1px 5px #808080;padding-top:10px;padding-bottom:10px">
+        <div class="container-fluid ">
+            <div class="">
+                <div class="row">
+                    <div id="ToogleList" class="col HeaderListBar card">
+                        <svg id="OpenList" onclick="ToogleList()" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="OpenList Show bi bi-list" style="color:white" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <svg id="CloseList" onclick="ToogleList()" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="CloseList Hide bi bi-x-square-fill" viewBox="0 0 16 16">
+                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                        </svg>
+                    </div>
+                    <div style="padding-left:60px" class="col-8">
+                        <h2 style="color:white">Administator</h2>
+                    </div>
+                    <div class="col-3">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        @RenderSection("Feature", false)
-        <hr />
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-4 bg-success">
-                <img src="~/Images/Logo/TDMU.png" class="p-3" />
+    <div class="container-fluid body-content">
+        <div id="SideBar" class="SideBar card">
+            <div class="" style="width:220px;">
+                <div class="p-2 d-flex justify-content-center">
+                    <img src="~/Images/Logo/Admin.png" style="width:100%"/>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <h5 class="card-title">Admin</h5>
+                </div>
+                <div class="p-1 d-flex justify-content-center">
+                    <a href="#" class="btn btn-primary">ĐĂNG XUẤT</a>
+                </div>
             </div>
-            <div class="col-8 bg-dark p-3" style="color:white">
+            <hr />
+            <span class="Title fw-bold">QUẢN LÝ SẢN PHẨM</span>
+            <ul class="Option">
+                <li class="Node"><a class ="Negative" href="/Products/Index">LAPTOP</a></li>
+                <li class="Node">CHUỘT</li>
+                <li class="Node">BÀN PHÍM</li>
+                <li class="Node">RAM</li>
+                <li class="Node">Ổ CỨNG</li>
+            </ul>
+            <span class="Title fw-bold" style="color:#3f6ad8">QUẢN LÝ ĐƠN HÀNG</span>
+            <ul class="Option">
+                <li class="Node">ĐẶT HÀNG</li>
+            </ul>
+            <span class="Title fw-bold" style="color:#3f6ad8">QUẢN LÝ BÀI VIẾT</span>
+            <ul class="Option">
+                <li class="Node">BÀI VIẾT</li>
+                <li class="Node">QUẢNG CÁO</li>
+            </ul>
+            <span class="Title fw-bold" style="color:#3f6ad8">TÀI KHOẢN</span>
+            <ul class="Option">
+                <li class="Node">CÀI ĐẶT</li>
+            </ul>
+        </div>
+        <div class="container " style="padding-top:40px">
+            <div class="">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div class="container bg-light footer">
+        <div class="row">
+            <div class="col-12 col-md-2 bg-dark d-flex align-items-center justify-content-center">
+                <img src="~/Images/Logo/TDMU.png" class="p-3" style="width:200px;" />
+            </div>
+            <div class="col-12 col-md-10 p-3" style="color:#5c5b5b">
                 <p class="fw-bold">Website này được tạo bởi 2 sinh viên đại học Thủ Dầu Một:</p>
                 <ul>
                     <li><p class="fw-bold">Trần Minh Quân</p></li>
                     <li><p class="fw-bold">Vương Tiến An</p></li>
                 </ul>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp; Nhằm phục vụ chương trình học "Lập trình website" vui lòng không dùng vào mục đích thương mại, mọi thắc mắc liên hệ mail <b>quantran1432k@gmail.com</b> hoặc sdt <b>0868655861</b></p>
-            <br />
-                <br />
+                <p>Nhằm phục vụ chương trình học "Lập trình website" vui lòng không dùng vào mục đích thương mại, mọi thắc mắc liên hệ mail <b>quantran1432k@gmail.com</b> hoặc sdt <b>0868655861</b></p>
             </div>
         </div>
     </div>
@@ -42,5 +92,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/Scripts/Main.js"></script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebsiteBanLaptop.Models.Product>
+
+@{
+    ViewBag.Title = "Laptop";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới Laptop", "Create","", new { @class = "btn btn-success" }) 
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AfterDiscount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPhoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Promotion.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AfterDiscount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPhoto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promotion.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID },new {@class="btn btn-success" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+</table>

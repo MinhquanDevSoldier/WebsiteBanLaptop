@@ -1,0 +1,15 @@
+﻿body {
+    
+}
+.list-menu{
+    display:none;
+}
+.header-item {
+}
+.headerlink {
+    text-decoration: none;
+    color: #505050;
+}
+.headerlink:hover {
+    color: darkred;
+}

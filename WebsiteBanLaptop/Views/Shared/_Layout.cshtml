@@ -4,39 +4,163 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="~/Content/Home.css"/>
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+    <div class="navbar navbar-fixed-top" style="background-color:white;box-shadow:2px 1px 10px 2px #808080;position:fixed;width:100%">
+        <div class="container" style="display:inline">
+            <div class="row">
+                <div id="listMenu" class="col-1 col-md-1 list-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </div>
+                <div class="col-1 col-md-1">
+                    <img id="lg-logo" src="data:image/png;base64,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" title="GEARVN PC HIGH-END &amp; GAMING GEAR" alt="gearvn" style="width:100%">
+                    <img id="sm-logo" src="data:image/png;base64,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" style="width:100%" class="list-menu"/>
+                </div>
+                <div class="col-8 col-md-5">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Nhập sản phẩm cần tìm" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-success" type="button" id="button-addon2">Tìm kiếm</button>
+                    </div>
+                </div>
+                <div id="HeadFeature" class="col-2 col-md-6">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div id="Register" class="col-3 header-item">
+                                <a href="#" class="fw-bold headerlink">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
+                                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                        <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
+                                    </svg>&nbspĐăng ký
+                                </a>
+                            </div>
+                            <div id="Login" class="col-3 header-item">
+                                <a href="#" class="fw-bold headerlink">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                                    </svg>&nbspĐăng nhập
+                                </a>
+                            </div>
+                            <div id="KhuyenMai" class="col-md-3 header-item">
+                                <a href="#" class="fw-bold headerlink">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                                    </svg>&nbspKhuyến mãi
+                                </a>
+                            </div>
+                            <div id="Cart" class="col-2 col-md-3 header-item">
+                                <a href="#" class="fw-bold headerlink">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+                                        <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z" />
+                                    </svg>&nbspGiỏ hàng
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer style="background-color: #f6f6f6;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-4" style="padding-top:20px">
+                        <!--<h3>GEARVN.COM - HI-END PC & GAMING GEAR</h3> -->
+                        <h3>Công ty TNHH Thương Mại GEARVN </h3>
+                        <div class="custom">
+                            <h3 class="title-footer-2">	Email: cskh@gearvn.com<br /></h3>
+                            <p style="font-size: 14px">
+                                <b>HỆ THỐNG TỔNG ĐÀI MIỄN PHÍ:</b> (Làm việc từ 08h00 - 21h00)<br />
+                                <table style="width: 296px;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 211px;">Gọi mua h&agrave;ng</td>
+                                            <td style="width: 105px;"><strong>1800 6975</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 211px;">Hỗ trợ khách hàng</td>
+                                            <td style="width: 105px;"><strong>1800 6173</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <br />
+                                <a href="https://gearvn.com/pages/chinh-sach-bao-hanh" style="font-size: 16px; color: #0655a6; font-weight: bold;">Chính sách bảo hành</a><br />
+                                <a href="https://gearvn.com/pages/huong-dan-thanh-toan-gearvn" style="font-size: 16px; color: #0655a6; font-weight: bold;">Chính sách thanh toán</a><br />
+                                <a href="https://gearvn.com/pages/chinh-sach-giao-hang" style="font-size: 16px; color: #0655a6; font-weight: bold;">Chính sách giao hàng</a><br />
+                                <a href="https://gearvn.com/pages/chinh-sach-bao-mat" style="font-size: 16px; color: #0655a6; font-weight: bold;">Chính sách bảo mật</a>
+                        </div>
+                        <h3 class="title-footer-2"></h3>
+                        <ul class="menu-footer">
+                        </ul>
+
+                        <a href="http://online.gov.vn/Home/WebDetails/74686" rel="nofollow">
+                            <img src="https://theme.hstatic.net/1000026716/1000440777/14/20150827110756-dathongbao.png" style="max-width: 300px;" />
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4" style="padding-top:20px">
+                        <a href="https://gearvn.com/pages/he-thong-showroom-gearvn">
+                            <p style="font-size: 16px; display: inline">
+                                <b>HỆ THỐNG CỬA HÀNG:</b>
+                            </p>
+                        </a>
+                        <p style="display: inline">
+                        </p>
+                        <br />
+
+                        <p style="font-size: 14px; padding-top: 4px">
+                            <b>SHOWROOM HCM</b> (Làm việc từ 8h00 - 21h00) <br />
+                            - Địa chỉ 1: 78-80-82 Hoàng Hoa Thám, Phường 12, Quận Tân Bình.<br />
+                            - Địa chỉ 2: 905 Kha Vạn Cân, Phường Linh Tây, Thành phố Thủ Đức.<br />
+                            - Địa chỉ 3: 1081 - 1083 Trần Hưng Đạo, Phường 5, Quận 5.<br />
+                            - Địa chỉ 4: 415 An Dương Vương, Phường 10, Quận 6.<br />
+                            <b>SHOWROOM HN </b> (Làm việc từ 8h00 - 21h00)<br />
+                            - Địa chỉ : 162 - 164 Thái Hà, Phường Trung Liệt, Quận Đống Đa, Hà Nội
+                            <a href="https://gearvn.com/pages/he-thong-showroom-gearvn">
+                                <p style="font-size: 16px; display: inline">
+                                    <b>TRUNG TÂM BẢO HÀNH:</b>
+                                </p>
+                            </a>
+                        <p style="display: inline">
+                        </p>
+                        <br />
+                        - Địa chỉ : 436A/71 đường 3/2, Phường 12, Quận 10, Hồ Chí Minh.<br />
+                        </p>
+                        <p>
+                            Mua <a href="https://gearvn.com/pages/pc-gvn">PC Gaming</a>, <a href="https://gearvn.com/collections/laptop-gaming">laptop gaming</a>, <a href="https://gearvn.com/collections/vga-card-man-hinh">card màn hình</a>, <a href="https://gearvn.com/pages/man-hinh">màn hình máy tính</a>, <a href="https://gearvn.com/pages/ghe-gaming-gia-re-gearvn">ghế gaming</a>, thiết bị chơi game như PS5 hàng đầu Việt Nam bảo hành chính hãng. Mua online nhận nhiều ưu đãi hấp dẫn.<br />
+                        </p>
+
+
+                        <!-- Pháp nhân -->
+
+                        <p style="font-size: 14px; padding-top: 4px">
+                            - Công ty TNHH Thương Mại Gearvn <br />
+                            - GPKD số 0316517394 do Sở KH và ĐT TP Hồ Chí Minh cấp ngày 01/10/2020 <br />
+                            - GĐ/Sở hữu website: Nguyễn Thế Anh <br />
+                        </p>
+                        <!-- Code veryfi DMCA Quocvu -->
+                        <a href="//www.dmca.com/Protection/Status.aspx?ID=65147526-7602-46be-9047-e8c33f9fcbd3" title="DMCA.com Protection Status" class="dmca-badge" rel="nofollow noopener noreferrer"> <img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=65147526-7602-46be-9047-e8c33f9fcbd3" alt="DMCA.com Protection Status" /></a>
+                        <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+                        <ul class="menu fix-menu">
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-4" style="padding-top:20px">
+                        <div class="Logo-footer" style="display:flex;justify-content:center">
+                            <img src="data:image/png;base64,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" alt="GEARVN - Máy Tính Cao Cấp &amp; Thiết Bị Chơi Game hàng đầu Việt Nam – GEARVN .COM"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Home.js" type="text/javascript"></script>
 </body>
 </html>

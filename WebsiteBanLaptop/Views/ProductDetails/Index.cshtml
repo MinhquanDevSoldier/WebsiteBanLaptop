@@ -1,0 +1,135 @@
+﻿@model IEnumerable<WebsiteBanLaptop.Models.ProductDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CPU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RAM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Storage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GraphicsCard)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Screen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KeyBoard)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Audio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wireless)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Webcam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommPort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperatingSystem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Batery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RAM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Storage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GraphicsCard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Screen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KeyBoard)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Audio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wireless)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Webcam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommPort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatingSystem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Batery)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PDID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PDID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PDID })
+        </td>
+    </tr>
+}
+
+</table>

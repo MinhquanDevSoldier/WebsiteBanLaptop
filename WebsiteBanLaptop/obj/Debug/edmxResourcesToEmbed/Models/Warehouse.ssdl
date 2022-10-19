@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLBanLaptopModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="varchar" MaxLength="125" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="BasePrice" Type="float" Nullable="false" />
+    <Property Name="AfterDiscount" Type="float" Nullable="false" />
+    <Property Name="ProductPhoto" Type="varchar" MaxLength="1000" />
+    <Property Name="PromotionID" Type="varchar" MaxLength="16" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductDetail">
+    <Key>
+      <PropertyRef Name="PDID" />
+    </Key>
+    <Property Name="PDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductID" Type="varchar" MaxLength="125" />
+    <Property Name="CPU" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="RAM" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Storage" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GraphicsCard" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Screen" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="KeyBoard" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Audio" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LAN" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Wireless" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Webcam" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CommPort" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="OperatingSystem" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Batery" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Size" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Color" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Promotion">
+    <Key>
+      <PropertyRef Name="PromotionID" />
+    </Key>
+    <Property Name="PromotionID" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DiscountNum" Type="float" Nullable="false" />
+    <Property Name="TypeDiscount" Type="varchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Product__Promoti__5FB337D6">
+    <End Role="Promotion" Type="Self.Promotion" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Promotion">
+        <PropertyRef Name="PromotionID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="PromotionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductDe__Produ__73BA3083">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLBanLaptopModel1StoreContainer">
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Product__Promoti__5FB337D6" Association="Self.FK__Product__Promoti__5FB337D6">
+      <End Role="Promotion" EntitySet="Promotion" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductDe__Produ__73BA3083" Association="Self.FK__ProductDe__Produ__73BA3083">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductDetail" EntitySet="ProductDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
